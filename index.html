@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAKAMURA Thiago | Professional CV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --text: #334155;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
+
+        body { background-color: var(--light); color: var(--text); line-height: 1.6; }
+
+        /* Navigation */
+        nav { background: white; padding: 1rem 2rem; position: sticky; top: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: center; gap: 20px; z-index: 1000; }
+        
+        nav a { text-decoration: none; color: var(--dark); font-weight: 600; padding: 0.5rem 1rem; border-radius: 6px; transition: 0.3s; }
+        
+        nav a:hover, nav a.active { background: var(--primary); color: white; }
+
+        /* Layout */
+        .container { max-width: 800px; margin: 2rem auto; padding: 0 20px; }
+        
+        section { display: none; animation: fadeIn 0.5s ease; }
+        section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Typography & Components */
+        h1 { font-size: 2.5rem; color: var(--dark); margin-bottom: 0.5rem; }
+        h2 { border-bottom: 2px solid var(--primary); display: inline-block; margin-bottom: 1.5rem; color: var(--dark); }
+        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 1.5rem; }
+        .date { color: var(--primary); font-weight: bold; font-size: 0.9rem; }
+        .tag { background: #e2e8f0; padding: 2px 10px; border-radius: 20px; font-size: 0.8rem; margin-right: 5px; }
+
+        /* Footer */
+        footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<nav id="main-nav">
+    <a href="#about" class="active" onclick="showSection('about')">About Me</a>
+    <a href="#experience" onclick="showSection('experience')">Experience & Projects</a>
+    <a href="#education" onclick="showSection('education')">Education</a>
+</nav>
+
+<div class="container">
+    
+    <section id="about" class="active">
+        <h1>Hi Hello There! My name is Thiago Takamura Yanaguissava 👋</h1>
+        <p style="font-size: 1.2rem; color: #64748b; margin-bottom: 2rem;">Reasearcher, Developer & Engineer</p>
+        <div class="card">
+            <h2>Summary</h2>
+            <p>My application for Materials Engineering came from an unsettling curiosity about thermodynamics. Since childhood, I have an affection for the concept of equilibrium and then, bewildered by dichotomies I’ve always been interested both in arts and science. On the field of natural studies, I kept myself delighted between chemistry and physics, whereas materials science has settled perfectly into the heart of my scientific interest and since I’ve joined this field I’ve been frequently astonished by it.</p> 
+            <p>As a freshman at the Brazilian university, I dedicated a whole semester to write a visual Conway’s game of life in C++ which should have been only a weekend homework, so I suppose programming was also a love at first sight. A couple of years later, studying in France, I deepen my studies on programming and focused it on materials simulation. My internship at the laboratory of EPM - SIMAP was a prolific and thoughtful work with professor Du Terrail, while simulating a grain movement with finite elements method in Fortran was very alike programming a navigation game, I helped to create a whole virtual world to better comprehend two physical phenomena working together, the magneto-thermoelectric effect and the fluid dynamics.</p> 
+            <p>From 2016 to 2018, I joined UGA - Polytech and discover the "old westtern world", a mind-blowing experience that helped me establish my ideals of world and working life. A brazillian poem by Drummond says: "No, my heart is not bigger than the world. It's much smaller. It can't even hold my sorrow" or the indescribable beauties of the universe which we ironically seek to describe, or at least simulate, some of them.</p>
+            <p>Like children, philosophers and artists, I still keep this insatiable curiosity to understand in order to feel the beauties of Nature and our humanity, I find mesmerizing some technologies humankind have achieved applying. Our moral obligation to ensure diginity to all human life through technology inspired me on my first internship back in 2014. Hydrogen will eventually overturn the means of our energy infrastructure. This scientific initiation was a valuable experience towards materials characterization and for my overview concern about sustainable development. In 2018, I went back to this research for a final college project, for which I proposed some methods to simulate sorption cycles on a solid state hydrogen storage. On my current PhD thesis, I am back into this field through a new perspective from materials simulation, the Density Functional Theory of solid state quantum computational chemistry.</p>
+            <p>From 2019 until now, I’ve joined a master thesis with professor Botta where I’ve been working on a more accurate thermodynamic model for liquid metals, specially to accommodate the supercooled region and seek a better a comprehension on amorphous alloys formation and its further crystallization. I also had experiences as teacher with college tutoring programs and preparatory courses in public high schools. These experiences were not essential for my graduation, but definitely were for my citizen formation and it is delightful to spot the bright of an insight in a student's eye. Back then I learned that Knowledge, alike happiness, it only makes sense if shared.</p>
+            <p>So, as a "R&D" Engineer I humbly seek some comprehension on the beauties of our universe to easy humanity's sorrows, and as a father and a husband I seek to help build a kinder world with less fear and oppression. I strive to contribute, as Whitman once said: “a verse while the powerful play of Life goes on”.</p>
+            <div style="margin-top: 20px;">
+                <a href="mailto:thiagotakamura@gmail.com" style="color: var(--primary); margin-right: 15px;"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://linkedin.com/in/thiagoty" style="color: var(--primary);"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <div class="card">
+            <span class="date">2023 - Present</span>
+            <h3>R&D Materials Engineer | Honda</h3>
+            <p>Experience in Steel sheet, Cast iron and Aluminum HPDC engine parts and KTL line homologations. NBR, ASTM, JIS.</p>
+        </div>
+
+        <h2>Key Projects</h2>
+        <div class="card">
+            <h3>Project Title</h3>
+            <p>A web application built using HTML, CSS, and JS that helps users track their productivity.</p>
+            <div style="margin-top: 10px;">
+                <span class="tag">JavaScript</span><span class="tag">GitHub</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <div class="card">
+            <span class="date">2021 - Present</span>
+            <h3>PhD in Materials Science & Engineering</h3>
+            <p>Universidade Federal de São Carlos</p>
+        </div>
+        <div class="card">
+            <span class="date">2019 - 2021</span>
+            <h3>Masters M2 in Materials Science & Engineering</h3>
+            <p>Universidade Federal de São Carlos | GPA: 3.40/4.00</p>
+        </div>
+        <div class="card">
+            <span class="date">2016 - 2018</span>
+            <h3>European Masters in Materials Engineering</h3>
+            <p>École Ppolytechnique de l'Université Grenoble Alpes | GPA: 2.85/4.00</p>
+        </div>
+        <div class="card">
+            <span class="date">2013 - 2019</span>
+            <h3>Bachelor in Materials Science & Engineering</h3>
+            <p>Universidade Federal de São Carlos | GPA: 3.14/4.00</p>
+        </div>
+        <!-- <div class="card">
+            <h3>Certifications</h3>
+            <ul>
+                <li>AWS Certified Cloud Practitioner</li>
+                <li>Google Data Analytics Professional Certificate</li>
+            </ul>
+        </div> -->
+    </section>
+
+</div>
+
+<footer>
+    &copy; 2026 TAKAMURA Thiago. Built with ❤️ on GitHub Pages.
+</footer>
+
+<script>
+    function showSection(sectionId) {
+        // Remove active class from all sections and nav links
+        document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        
+        // Add active class to selected section and link
+        document.getElementById(sectionId).classList.add('active');
+        document.querySelector(`nav a[href="#${sectionId}"]`).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
