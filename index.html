@@ -83,57 +83,15 @@
         .download-btn:hover { background: var(--primary); color: white; }
 
         /* Footer */
-        footer { text-align: center; padding: 3rem; border-top: 1px solid var(--border); color: var<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAKAMURA Thiago | Professional CV</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --primary: #2563eb;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --text: #334155;
-        }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', system-ui, sans-serif; }
-
-        body { background-color: var(--light); color: var(--text); line-height: 1.6; }
-
-        /* Navigation */
-        nav { background: white; padding: 1rem 2rem; position: sticky; top: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); display: flex; justify-content: center; gap: 20px; z-index: 1000; }
-        
-        nav a { text-decoration: none; color: var(--dark); font-weight: 600; padding: 0.5rem 1rem; border-radius: 6px; transition: 0.3s; }
-        
-        nav a:hover, nav a.active { background: var(--primary); color: white; }
-
-        /* Layout */
-        .container { max-width: 800px; margin: 2rem auto; padding: 0 20px; }
-        
-        section { display: none; animation: fadeIn 0.5s ease; }
-        section.active { display: block; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Typography & Components */
-        h1 { font-size: 2.5rem; color: var(--dark); margin-bottom: 0.5rem; }
-        h2 { border-bottom: 2px solid var(--primary); display: inline-block; margin-bottom: 1.5rem; color: var(--dark); }
-        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 1.5rem; }
-        .date { color: var(--primary); font-weight: bold; font-size: 0.9rem; }
-        .tag { background: #e2e8f0; padding: 2px 10px; border-radius: 20px; font-size: 0.8rem; margin-right: 5px; }
-
-        /* Footer */
-        footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.9rem; }
+        footer { text-align: center; padding: 3rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
     </style>
 </head>
 <body>
 
 <nav id="main-nav">
-    <a href="#about" class="active" onclick="showSection('about')">About Me</a>
-    <a href="#experience" onclick="showSection('experience')">Experience & Projects</a>
-    <a href="#education" onclick="showSection('education')">Education</a>
+    <a href="#about" class="active" onclick="showSection('about')">01 ABOUT</a>
+    <a href="#experience" onclick="showSection('experience')">02 EXP & PROJECTS</a>
+    <a href="#education" onclick="showSection('education')">03 EDUCATION</a>
 </nav>
 
 <div class="container">
@@ -141,18 +99,18 @@
     <section id="about" class="active">
         <h1>Hello World!</h1>
         <h1>My name is Thiago Takamura!🖖</h1>
-        <p style="font-size: 1.2rem; color: #64748b; margin-bottom: 2rem;">Reasearcher, Developer & Engineer</p>
+        <p style="font-size: 1.3rem; font-weight: 600; color: var(--text-muted); margin-bottom: 2rem;">R&D Engineer | Researcher | Developer</p>
         <div class="card">
-            <h2>Summary</h2>
-           <p style="text-align: justify;"> My application for Materials Engineering came from an unsettling curiosity about thermodynamics. Since childhood, I have an affection for the concept of equilibrium and then, bewildered by dichotomies I’ve always been interested both in arts and science. On the field of natural studies, I kept myself delighted between chemistry and physics, whereas materials science has settled perfectly into the heart of my scientific interest and since I’ve joined this field I’ve been frequently astonished by it.<br><br>
+            <h3>Summary</h3>
+           <p class="about-text"> My application for Materials Engineering came from an unsettling curiosity about thermodynamics. Since childhood, I have an affection for the concept of equilibrium and then, bewildered by dichotomies I’ve always been interested both in arts and science. On the field of natural studies, I kept myself delighted between chemistry and physics, whereas materials science has settled perfectly into the heart of my scientific interest and since I’ve joined this field I’ve been frequently astonished by it.<br><br>
             As a freshman at the Brazilian university, I dedicated a whole semester to write a visual Conway’s game of life in C++ which should have been only a weekend homework, so I suppose programming was also a love at first sight. A couple of years later, studying in France, I deepen my studies on programming and focused it on materials simulation. My internship at the laboratory of EPM - SIMAP was a prolific and thoughtful work with professor Du Terrail, while simulating a grain movement with finite elements method in Fortran was very alike programming a navigation game, I helped to create a whole virtual world to better comprehend two physical phenomena working together, the magneto-thermoelectric effect and the fluid dynamics.<br><br>
             From 2016 to 2018, I joined UGA - Polytech and discover the "old westtern world", a mind-blowing experience that broadens my worldview to this day. A brazillian poem by Drummond says: <i>"No, my heart is not bigger than the World. It's much smaller. It can't even hold my sorrow"</i> or the indescribable beauties of the universe which we ironically seek to describe or at least to simulate some of them.<br><br>
             Like children, philosophers and artists, I still keep this insatiable curiosity to understand in order to feel the beauties of Nature and of our humanity. I am mesmerized by some technologies humankind have achieved as well as disgusted by some others. Our moral obligation to ensure diginity to all human life through technology inspired me on my first internship back in 2014. Hydrogen will eventually overturn the means of our energy infrastructure. This scientific initiation was a valuable experience towards materials characterization and for my overview concern about sustainable development. On my current PhD thesis, I am back into this field through a new perspective of materials simulation, the Density Functional Theory of solid state quantum computational chemistry.<br><br>
             From 2019 to 2021, I’ve joined a master thesis with professor Botta where I’ve been working on a more accurate thermodynamic model for liquid metals, specially to accommodate the supercooled region and seek a better a comprehension on amorphous alloys formation and its further crystallizations. I also had experiences as teacher with college tutoring programs and preparatory courses in public high schools. And to spot the bright of an insight in a student's eye while also learning from the students perspective were essential to made me a worldwide citizen. Back then I learned that Knowledge, alike happiness, it only makes sense if its shared.<br><br>
-            So, as a "R&D" Engineer I humbly seek some comprehension on the beauties of our universe to easy humanity's sorrows, and as a father and a husband I seek to help build a kinder world with less fear and oppression. I strive to contribute, as Whitman once said: <i>“a verse while the powerful play of Life goes on”</i>.</p><br><br>
+            So, as a "R&D" Engineer I humbly seek some comprehension on the beauties of our universe to easy humanity's sorrows, and as a father and a husband I seek to help build a kinder world with less fear and oppression. I strive to contribute, as Whitman once said: <i>“a verse while the powerful play of Life goes on”</i>.</p>
             <div style="margin-top: 20px;">
-                <a href="mailto:thiagotakamura@gmail.com" style="color: var(--primary); margin-right: 15px;"><i class="fas fa-envelope"></i> Email</a>
-                <a href="https://linkedin.com/in/thiagoty" style="color: var(--primary);"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="mailto:thiagotakamura@gmail.com" style="color: var(--primary); text-decoration: none; margin-right: 20px;"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://linkedin.com/in/thiagoty" style="color: var(--primary); text-decoration: none;"><i class="fab fa-linkedin"></i> LinkedIn</a>
             </div>
         </div>
     </section>
@@ -164,36 +122,79 @@
             <h3>R&D Materials Engineer | Honda</h3>
             <p>Experience with Steel sheet homologation, Cast iron and Aluminum HPDC engine parts development, VA/VE and KTL paint line audit.</p>
             <p>Full-Stack vibe coder dev for the R&D division: App & Dashboard dev, database creation and formating for BI.</p>
-            <div style="margin-top: 10px;">
+            <div style="margin-top: 15px;">
                 <span class="tag">NBR</span><span class="tag">JIS</span><span class="tag">ASTM</span><span class="tag">Microsoft Power Platform</span><span class="tag">VBA</span><span class="tag">YAML</span><span class="tag">SEM-EDS</span><span class="tag">FTIR</span><span class="tag">Micrography</span><span class="tag">DSC</span>
             </div>
         </div>
 
         <h2>Key Projects</h2>    
-        <div class="card">
+        <div class="card project-card">
+            <span class="date">SIMAP Internship</span>
             <h3>Simulation of magneto-thermoelectric hydrodynamics around a grain with multi-mesh finite element method</h3>
-            <p style="text-align: justify;">Magneto-thermoelectric forces are risen from the interaction between a superimposed magnetic field and the electric currents generated by thermoelectric phenomena on the vicinity of a solid-liquid interface at given temperature gradient (Thomson-Seebeck effect). Those forces effects are observed as grain movements during a directional solidification in the presence of a static magnetic field. EPM research group from the Grenoble Alpes University focused on a better comprehension of the magnetothermoelectric forces and hydrodynamics through computational simulation and mathematical modelling. For such purpose, we worked with EPM internal code, Aequatio, for solving partial differential equations based on finite element method with multi-mesh technique. The multi-mesh technique is very convenient to treat problems with a broad span of scale, such as the field of solidification. For this project, we proposed to take into account the model with the Navier-Stokes coupled with the magneto-thermoelectric force; the continuity equation for electric currents, considering both thermoelectric currents and induced currents by the liquid movement and by the magnetic field, and also the heat transfer equation. The simulations are based on a liquid alloy (Al-10%wtCu) liquid domain with the presence of a single micrometric grain, in a 20K/cm thermal gradient and a 0.08T imposed static magnetic field. The two interpolated meshes are: one for the liquid domain and a much finer one for the grain and its surroundings.</p>
+            
+            <button class="description-toggle" onclick="toggleProject(this)">
+                Read Description <i class="fas fa-chevron-down"></i>
+            </button>
+            <a href="https://github.com/thiagoty/portfolio-files/raw/main/projects/mag_thermoelectric_grain.pdf" target="_blank" class="download-btn">
+                <i class="fas fa-download"></i> Thesis File (GitHub)
+            </a>
+
+            <p class="project-description">Magneto-thermoelectric forces are risen from the interaction between a superimposed magnetic field and the electric currents generated by thermoelectric phenomena on the vicinity of a solid-liquid interface at given temperature gradient (Thomson-Seebeck effect). Those forces effects are observed as grain movements during a directional solidification in the presence of a static magnetic field. EPM research group from the Grenoble Alpes University focused on a better comprehension of the magnetothermoelectric forces and hydrodynamics through computational simulation and mathematical modelling. For such purpose, we worked with EPM internal code, Aequatio, for solving partial differential equations based on finite element method with multi-mesh technique. The multi-mesh technique is very convenient to treat problems with a broad span of scale, such as the field of solidification. For this project, we proposed to take into account the model with the Navier-Stokes coupled with the magneto-thermoelectric force; the continuity equation for electric currents, considering both thermoelectric currents and induced currents by the liquid movement and by the magnetic field, and also the heat transfer equation. The simulations are based on a liquid alloy (Al-10%wtCu) liquid domain with the presence of a single micrometric grain, in a 20K/cm thermal gradient and a 0.08T imposed static magnetic field. The two interpolated meshes are: one for the liquid domain and a much finer one for the grain and its surroundings.</p>
+            
             <div style="margin-top: 10px;">
                 <span class="tag">Navier-Stokes</span><span class="tag">Fortran</span><span class="tag">CFD</span><span class="tag">Matlab</span>
             </div>
         </div>
-        <div class="card">
+
+        <div class="card project-card">
+            <span class="date">Master Thesis</span>
             <h3>CALPHAD Description of the Super-cooled Liquid from the Mo-Nb-B System with the 2-State Model</h3>
-            <p style="text-align: justify;">This work used the Thermo-Calc software to model with the CALPHAD method the super-cooled liquid (SCL) that leads to the formation of metallic vitreous materials. This research improved the database for thermodynamic calculations of SCLs in the computational study of materials, specifically some subsystems of the Fe-Mo-Cr-Nb-B system, since its application as a metallic glass coating combines exceptionally hardness, corrosion resistance and wear resistance. Thus, continuing the work of the LHM research group from the Federal University of São Carlos that modeled the Fe-Nb-B system with the same methods and models, this work describes the liquid molybdenum through the 2-state phenomenological model as well as the binary liquids Mo-Nb and Mo-B.</p>
+            
+            <button class="description-toggle" onclick="toggleProject(this)">
+                Read Description <i class="fas fa-chevron-down"></i>
+            </button>
+            <a href="https://github.com/thiagoty/portfolio-files/raw/main/projects/calphad_mo_nb_b.pdf" target="_blank" class="download-btn">
+                <i class="fas fa-download"></i> Thesis File (GitHub)
+            </a>
+
+            <p class="project-description">This work used the Thermo-Calc software to model with the CALPHAD method the super-cooled liquid (SCL) that leads to the formation of metallic vitreous materials. This research improved the database for thermodynamic calculations of SCLs in the computational study of materials, specifically some subsystems of the Fe-Mo-Cr-Nb-B system, since its application as a metallic glass coating combines exceptionally hardness, corrosion resistance and wear resistance. Thus, continuing the work of the LHM research group from the Federal University of São Carlos that modeled the Fe-Nb-B system with the same methods and models, this work describes the liquid molybdenum through the 2-state phenomenological model as well as the binary liquids Mo-Nb and Mo-B.</p>
+            
             <div style="margin-top: 10px;">
                 <span class="tag">CALPHAD</span><span class="tag">Thermo-Calc</span><span class="tag">Python</span><span class="tag">LaTex</span>
             </div>
         </div>
-        <div class="card">
+
+        <div class="card project-card">
+            <span class="date">Review</span>
             <h3>Survey of Research Opportunities in Numerical Simulation for Hydrogen Storage in Hydrides</h3>
-            <p style="text-align: justify;">This study reviews the literature written to that date on the topic of hydrogen storage in metal hydrides and proposes numerical simulation projects in order to understand and model complex and multiphysics characteristics coupling experimental data with numerical approximations of existing models. [Written in <strong>Brazilian Portuguese</strong>]
+            
+            <button class="description-toggle" onclick="toggleProject(this)">
+                Read Description <i class="fas fa-chevron-down"></i>
+            </button>
+            <a href="https://github.com/thiagoty/portfolio-files/raw/main/projects/h2_storage_review_ptbr.pdf" target="_blank" class="download-btn">
+                <i class="fas fa-download"></i> Review File (GitHub)
+            </a>
+
+            <p class="project-description">This study reviews the literature written to that date on the topic of hydrogen storage in metal hydrides and proposes numerical simulation projects in order to understand and model complex and multiphysics characteristics coupling experimental data with numerical approximations of existing models. [Written in <strong>Brazilian Portuguese</strong>]</p>
+            
             <div style="margin-top: 10px;">
                 <span class="tag">Python</span><span class="tag">CFD</span>
             </div>
         </div>
-        <div class="card">
+
+        <div class="card project-card">
+            <span class="date">Scientific Initiation</span>
             <h3>Study of Hydrogen Absorption and Desorption in MgH2 Composites with Palladium Surface Coating</h3>
-            <p style="text-align: justify;">This study analyzed a hydrogen storage material coated with a thin film of palladium. Mg-based nanocomposites are the most studied materials for hydrogen storage in the hydride phase (MgH2) due to its high gravinmetric capacity. However, such composites are very reactive in the formation of oxides and hydroxides, which makes their handling in air impossible and reduces both their kinetic and their storage capacity efficiency. The palladium coating aims to prevent such oxidation and water formation on the surface, while maintaining the material's permeability to hydrogen gas.</p>
+            
+            <button class="description-toggle" onclick="toggleProject(this)">
+                Read Description <i class="fas fa-chevron-down"></i>
+            </button>
+            <a href="https://github.com/thiagoty/portfolio-files/raw/main/projects/mgh2_palladium_coating.pdf" target="_blank" class="download-btn">
+                <i class="fas fa-download"></i> File (GitHub)
+            </a>
+
+            <p class="project-description">This study analyzed a hydrogen storage material coated with a thin film of palladium. Mg-based nanocomposites are the most studied materials for hydrogen storage in the hydride phase (MgH2) due to its high gravinmetric capacity. However, such composites are very reactive in the formation of oxides and hydroxides, which makes their handling in air impossible and reduces both their kinetic and their storage capacity efficiency. The palladium coating aims to prevent such oxidation and water formation on the surface, while maintaining the material's permeability to hydrogen gas.</p>
+            
             <div style="margin-top: 10px;">
                 <span class="tag">DSC</span><span class="tag">TGA</span><span class="tag">Confocal Microscopy</span>
             </div>
@@ -202,45 +203,53 @@
 
     <section id="education">
         <h2>Education</h2>
-        <div class="card">
-            <span class="date">2021 - Present</span>
-            <h3>PhD in Materials Science & Engineering</h3>
-            <p>Metallic Materials</p>
-            <p>Universidade Federal de São Carlos</p>
+        
+        <div class="swipe-container" id="edu-stack">
+            <div class="education-card-swipe">
+                <span class="date">2021 - Present</span>
+                <h3>PhD in Materials Science & Engineering</h3>
+                <p>Metallic Materials</p>
+                <p style="color: var(--text-muted);">Universidade Federal de São Carlos</p>
+            </div>
+            
+            <div class="education-card-swipe">
+                <span class="date">2019 - 2021</span>
+                <h3>Brazilian Masters in MSE</h3>
+                <p>Metallic Materials</p>
+                <p style="color: var(--text-muted);">UFSCar | GPA: 3.40/4.0</p>
+            </div>
+            
+            <div class="education-card-swipe">
+                <span class="date">2016 - 2018</span>
+                <h3>European Masters in Materials Engineering</h3>
+                <p>École Polytechnique de l'Université Grenoble Alpes | GPA: 2.85/4.0</p>
+            </div>
+
+            <div class="education-card-swipe">
+                <span class="date">2013 - 2019</span>
+                <h3>Bachelor in Materials Science & Engineering</h3>
+                <p>Polymer Materials</p>
+                <p style="color: var(--text-muted);">UFSCar | GPA: 3.14/4.0</p>
+            </div>
         </div>
-        <div class="card">
-            <span class="date">2019 - 2021</span>
-            <h3>Brazilian Masters in Materials Science & Engineering</h3>
-            <p>Metallic Materials</p>
-            <p>Universidade Federal de São Carlos | GPA: 3.40/4.0</p>
+
+        <div class="swipe-indicators" id="swipe-dots">
+            <i class="fas fa-circle active" onclick="jumpToCard(0)"></i>
+            <i class="fas fa-circle" onclick="jumpToCard(1)"></i>
+            <i class="fas fa-circle" onclick="jumpToCard(2)"></i>
+            <i class="fas fa-circle" onclick="jumpToCard(3)"></i>
         </div>
-        <div class="card">
-            <span class="date">2016 - 2018</span>
-            <h3>European Masters in Materials Engineering</h3>
-            <p>École Ppolytechnique de l'Université Grenoble Alpes | GPA: 2.85/4.0</p>
-        </div>
-        <div class="card">
-            <span class="date">2013 - 2019</span>
-            <h3>Bachelor in Materials Science & Engineering</h3>
-            <p>Polymer Materials</p>
-            <p>Universidade Federal de São Carlos | GPA: 3.14/4.0</p>
-        </div>
-        <!-- <div class="card">
-            <h3>Certifications</h3>
-            <ul>
-                <li>AWS Certified Cloud Practitioner</li>
-                <li>Google Data Analytics Professional Certificate</li>
-            </ul>
-        </div> -->
+
     </section>
 
 </div>
 
 <footer>
-    &copy; 2026 TAKAMURA Thiago. Built with ❤️ on GitHub Pages.
+    &copy; 2026 TAKAMURA Thiago. Profile modernized for Software Engineering standards. Built on ❤️ GitHub Pages.
 </footer>
 
 <script>
+    // --- Navigation Logic ---
     function showSection(sectionId) {
         // Remove active class from all sections and nav links
         document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
@@ -249,7 +258,182 @@
         // Add active class to selected section and link
         document.getElementById(sectionId).classList.add('active');
         document.querySelector(`nav a[href="#${sectionId}"]`).classList.add('active');
+        
+        // Reset Education Swipe if section changes
+        if(sectionId === 'education'){ initSwipe(); }
     }
+
+    // --- Project Expansion Logic ---
+    function toggleProject(button) {
+        const card = button.closest('.project-card');
+        card.classList.toggle('expanded');
+        button.classList.toggle('expanded');
+        
+        const icon = button.querySelector('i');
+        const text = button.innerText.trim();
+        
+        if (card.classList.contains('expanded')) {
+            button.innerHTML = 'Hide Description <i class="fas fa-chevron-up"></i>';
+            button.classList.add('expanded');
+        } else {
+            button.innerHTML = 'Read Description <i class="fas fa-chevron-down"></i>';
+            button.classList.remove('expanded');
+        }
+    }
+
+    // --- Education Swipe Logic ---
+    let currentEduCardIndex = 0;
+    let startX = 0;
+    let isSwiping = false;
+    let eduStack, cards, dots;
+
+    function initSwipe() {
+        eduStack = document.getElementById('edu-stack');
+        cards = Array.from(eduStack.querySelectorAll('.education-card-swipe'));
+        dots = Array.from(document.getElementById('swipe-dots').querySelectorAll('i'));
+
+        if (cards.length === 0) return;
+
+        // Add event listeners for mouse and touch
+        eduStack.addEventListener('mousedown', swipeStart);
+        eduStack.addEventListener('touchstart', swipeStart, {passive: true});
+
+        window.addEventListener('mousemove', swiping);
+        window.addEventListener('touchmove', swiping, {passive: true});
+
+        window.addEventListener('mouseup', swipeEnd);
+        window.addEventListener('touchend', swipeEnd);
+
+        updateCardStack();
+    }
+
+    function swipeStart(e) {
+        if(cards.length <= 1) return;
+        isSwiping = true;
+        startX = (e.type === 'touchstart') ? e.touches[0].clientX : e.clientX;
+        cards[0].classList.add('swiping');
+    }
+
+    function swiping(e) {
+        if (!isSwiping) return;
+        const currentX = (e.type === 'touchmove') ? e.touches[0].clientX : e.clientX;
+        const diffX = currentX - startX;
+        
+        // Apply transformation to the top card only
+        if(diffX > 0) { // Swipe Right (Previous)
+           cards[0].style.transform = `translateX(${diffX}px) rotate(${diffX / 20}deg)`;
+        } else { // Swipe Left (Next)
+           cards[0].style.transform = `translateX(${diffX}px) rotate(${diffX / 20}deg)`;
+        }
+    }
+
+    function swipeEnd(e) {
+        if (!isSwiping) return;
+        isSwiping = false;
+        cards[0].classList.remove('swiping');
+
+        const currentX = (e.type === 'touchend') ? e.changedTouches[0].clientX : e.clientX;
+        const diffX = currentX - startX;
+        const threshold = window.innerWidth * 0.2; // Swipe 20% of width to trigger
+
+        if (Math.abs(diffX) > threshold) {
+            // Successful swipe
+            completeSwipe(diffX > 0 ? 'right' : 'left');
+        } else {
+            // Reset position
+            cards[0].style.transform = '';
+            updateCardStack();
+        }
+    }
+
+    function completeSwipe(direction) {
+        const topCard = cards[0];
+        
+        // Animate off-screen
+        topCard.style.transition = 'transform 0.5s ease-out, opacity 0.5s ease-out';
+        topCard.style.opacity = '0';
+        topCard.style.transform = direction === 'right' ? 'translateX(100vw) rotate(40deg)' : 'translateX(-100vw) rotate(-40deg)';
+
+        // After animation, move to back of stack
+        setTimeout(() => {
+            // Reset styles for the card that swiped away
+            topCard.style.transition = '';
+            topCard.style.opacity = '';
+            topCard.style.transform = '';
+            
+            // Reorder cards array
+            cards.push(cards.shift());
+            
+            // Re-append DOM element to the back (visually last)
+            eduStack.appendChild(topCard);
+            
+            // Update visual stack layering
+            updateCardStack();
+            
+            // Update Indicators
+            currentEduCardIndex = (currentEduCardIndex + 1) % cards.length;
+            updateDots();
+
+        }, 500); // Match transition time
+    }
+
+    function updateCardStack() {
+        if(!cards) return;
+        cards.forEach((card, index) => {
+            card.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+            card.style.transform = ''; // Clear swiping transforms
+
+            if (index === 0) {
+                card.style.zIndex = '4';
+                card.style.transform = 'translateZ(0)';
+                card.style.opacity = '1';
+            } else if (index === 1) {
+                card.style.zIndex = '3';
+                card.style.transform = 'scale(0.95) translateY(15px) translateZ(-10px)';
+                card.style.opacity = '0.8';
+            } else if (index === 2) {
+                card.style.zIndex = '2';
+                card.style.transform = 'scale(0.9) translateY(30px) translateZ(-20px)';
+                card.style.opacity = '0.5';
+            } else {
+                card.style.zIndex = '1';
+                card.style.transform = 'scale(0.85) translateY(45px) translateZ(-30px)';
+                card.style.opacity = '0'; // Hide others
+            }
+        });
+    }
+
+    function updateDots() {
+        if(!dots) return;
+        dots.forEach((dot, index) => {
+            if (index === currentEduCardIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function jumpToCard(targetIndex) {
+        if(cards.length <= 1 || targetIndex === currentEduCardIndex) return;
+        
+        // How many cards to swipe away
+        let steps = targetIndex - currentEduCardIndex;
+        if(steps < 0) steps += cards.length; // Handle wrap-around
+
+        // Sequence of 'left' swipes to reach target
+        for(let i = 0; i < steps; i++) {
+           setTimeout(() => completeSwipe('left'), i * 150); // Small delay for effect
+        }
+    }
+
+    // Initialize Swipe on load if the current section is education
+    window.onload = function() {
+        if(document.getElementById('education').classList.contains('active')){
+            initSwipe();
+        }
+    };
+
 </script>
 
 </body>
