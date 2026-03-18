@@ -4,20 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TAKAMURA Thiago | R&D Materials Engineer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary: #06b6d4;
-            --primary-hover: #0891b2;
-            --bg-main: #0f172a;
-            --bg-card: #1e293b;
+            --primary: #00e5ff;
+            --primary-glow: rgba(0, 229, 255, 0.4);
+            --secondary: #7b2cbf;
+            --bg-main: #050505;
+            --bg-card: rgba(20, 25, 35, 0.6);
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border: #334155;
-            --font-main: 'Helvetica', system-ui, sans-serif;
-            --font-mono: 'Helvetica', sans-serif;
-            --transition: 0.3s ease;
+            --border: rgba(255, 255, 255, 0.08);
+            --font-main: 'Inter', system-ui, sans-serif;
+            --font-mono: 'Space Grotesk', sans-serif;
+            --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,20 +29,36 @@
             font-family: var(--font-main);
             line-height: 1.7; 
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(123, 44, 191, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 229, 255, 0.08), transparent 25%);
+            background-attachment: fixed;
         }
 
-        /* Navigation */
+        /* Ambient Glow Effect */
+        .ambient-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none; z-index: -1;
+            background: radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.05), transparent 50%);
+        }
+
+        /* Navigation - Floating Pill */
         nav { 
-            background: rgba(15, 23, 42, 0.85); 
-            padding: 1rem 2rem; 
-            position: sticky; 
-            top: 0; 
-            border-bottom: 1px solid var(--border); 
-            backdrop-filter: blur(12px); 
+            background: rgba(15, 20, 30, 0.7); 
+            padding: 0.75rem 1rem; 
+            position: fixed; 
+            top: 2rem; 
+            left: 50%;
+            transform: translateX(-50%);
+            border: 1px solid var(--border); 
+            backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px);
             display: flex; 
-            justify-content: center; 
-            gap: 1.5rem; 
+            gap: 0.5rem; 
             z-index: 1000; 
+            border-radius: 100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         
         nav a { 
@@ -49,107 +66,220 @@
             text-decoration: none; 
             color: var(--text-muted); 
             font-weight: 600; 
-            font-size: 0.9rem; 
-            padding: 0.5rem 1rem; 
-            border-radius: 8px; 
+            font-size: 0.85rem; 
+            padding: 0.6rem 1.2rem; 
+            border-radius: 100px; 
             transition: var(--transition); 
+            letter-spacing: 0.5px;
         }
         
-        nav a:hover, nav a.active { 
-            background: rgba(6, 182, 212, 0.1); 
+        nav a:hover { color: #fff; }
+        nav a.active { 
+            background: rgba(0, 229, 255, 0.15); 
             color: var(--primary); 
+            box-shadow: inset 0 0 10px var(--primary-glow);
         }
 
         /* Layout */
-        .container { max-width: 800px; margin: 3rem auto; padding: 0 20px; min-height: 80vh; }
+        .container { 
+            max-width: 860px; 
+            margin: 8rem auto 4rem auto; 
+            padding: 0 24px; 
+            min-height: 80vh; 
+        }
         
-        section { display: none; animation: fadeIn 0.5s ease-out forwards; opacity: 0; }
+        section { 
+            display: none; 
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+            opacity: 0; 
+        }
         section.active { display: block; }
 
-        @keyframes fadeIn { 
-            from { opacity: 0; transform: translateY(20px); } 
+        @keyframes slideUp { 
+            from { opacity: 0; transform: translateY(30px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
 
         /* Typography */
-        h1 { font-family: var(--font-mono); font-size: 2.8rem; color: var(--text-main); margin-bottom: 0.5rem; line-height: 1.2; }
-        h2 { font-family: var(--font-mono); border-bottom: 2px solid var(--primary); display: inline-block; margin: 2rem 0 1.5rem 0; font-size: 1.8rem; padding-bottom: 0.3rem;}
-        h3 { font-family: var(--font-mono); font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--text-main); }
-        .subtitle { font-size: 1.2rem; font-weight: 500; color: var(--primary); margin-bottom: 2rem; }
+        h1 { font-family: var(--font-mono); font-size: 3.2rem; color: #fff; margin-bottom: 0.5rem; line-height: 1.1; letter-spacing: -1px; }
+        h2 { font-family: var(--font-mono); font-size: 2rem; color: #fff; margin: 3rem 0 1.5rem 0; display: flex; align-items: center; gap: 15px; }
+        h2::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
+        h3 { font-family: var(--font-mono); font-size: 1.4rem; margin-bottom: 0.5rem; color: #fff; }
+        .subtitle { font-size: 1.1rem; font-weight: 400; color: var(--primary); margin-bottom: 2rem; font-family: var(--font-mono); letter-spacing: 0.5px; }
+
+        /* Profile Area */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            padding: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            animation: spinGradient 4s linear infinite;
+        }
+
+        @keyframes spinGradient {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-main);
+            background-color: var(--bg-main);
+        }
 
         /* General Card & Tags */
-        .card { background: var(--bg-card); padding: 2.5rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.2); margin-bottom: 1.5rem; }
-        .date { color: var(--primary); font-family: var(--font-mono); font-weight: 600; font-size: 0.85rem; display: inline-block; margin-bottom: 0.8rem; letter-spacing: 0.5px; text-transform: uppercase; }
+        .card { 
+            background: var(--bg-card); 
+            padding: 2.5rem; 
+            border-radius: 20px; 
+            border: 1px solid var(--border); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05); 
+            margin-bottom: 1.5rem; 
+        }
         
-        .tag-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; }
-        .tag { background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.2); color: var(--primary); font-family: var(--font-mono); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+        .date { 
+            color: var(--primary); 
+            font-family: var(--font-mono); 
+            font-weight: 600; 
+            font-size: 0.85rem; 
+            display: inline-block; 
+            margin-bottom: 1rem; 
+            letter-spacing: 1px; 
+            text-transform: uppercase; 
+            background: rgba(0, 229, 255, 0.1);
+            padding: 4px 12px;
+            border-radius: 100px;
+        }
+        
+        .tag-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.5rem; }
+        .tag { 
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            color: var(--text-muted); 
+            font-family: var(--font-mono); 
+            padding: 6px 14px; 
+            border-radius: 100px; 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            transition: var(--transition);
+        }
+        .tag:hover { border-color: var(--primary); color: var(--primary); background: rgba(0, 229, 255, 0.05); }
 
         /* Links & Buttons */
-        .action-link { color: var(--text-main); text-decoration: none; margin-right: 1.5rem; display: inline-flex; align-items: center; gap: 8px; transition: var(--transition); font-weight: 500; }
-        .action-link:hover { color: var(--primary); }
+        .action-link { 
+            color: var(--text-muted); 
+            text-decoration: none; 
+            margin-right: 1.5rem; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            transition: var(--transition); 
+            font-weight: 500; 
+        }
+        .action-link:hover { color: #fff; transform: translateY(-2px); }
         .action-link i { font-size: 1.2rem; color: var(--primary); }
 
-        .download-btn { font-family: var(--font-mono); font-weight: 600; font-size: 0.8rem; background: transparent; color: var(--text-main); border: 1px solid var(--border); text-decoration: none; padding: 8px 16px; border-radius: 8px; transition: var(--transition); display: inline-flex; align-items: center; gap: 8px; margin-bottom: 1rem; }
-        .download-btn:hover { background: var(--primary); border-color: var(--primary); color: #fff; }
+        .download-btn { 
+            font-family: var(--font-mono); 
+            font-weight: 600; 
+            font-size: 0.85rem; 
+            background: rgba(255,255,255,0.03); 
+            color: #fff; 
+            border: 1px solid var(--border); 
+            text-decoration: none; 
+            padding: 10px 20px; 
+            border-radius: 10px; 
+            transition: var(--transition); 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            margin-bottom: 1.5rem; 
+        }
+        .download-btn:hover { 
+            background: var(--primary); 
+            border-color: var(--primary); 
+            color: #000; 
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
 
         /* Text Formatting */
-        .about-text { color: var(--text-muted); font-size: 1rem; }
+        .about-text { color: var(--text-muted); font-size: 1.05rem; font-weight: 300; }
         .about-text p { margin-bottom: 1.2rem; }
-        .about-text i { color: var(--text-main); border-left: 2px solid var(--primary); padding-left: 10px; margin-left: 5px; display: inline-block; font-style: italic; }
+        .about-text i { color: #fff; border-left: 2px solid var(--primary); padding-left: 12px; margin-left: 5px; display: inline-block; font-style: italic; background: linear-gradient(90deg, rgba(0,229,255,0.05), transparent); padding-right: 15px; border-radius: 0 4px 4px 0;}
+        strong { color: #fff; font-weight: 500; }
 
-        /* Projects & Education Cards */
-        .stack-wrapper { position: relative; width: 100%; margin: 2rem 0 3rem 0; }
-        .stack-container { position: relative; height: 480px; width: 100%; display: flex; justify-content: center; perspective: 1000px; }
+        /* Projects & Education Cards (Premium Stack) */
+        .stack-wrapper { position: relative; width: 100%; margin: 2rem 0 4rem 0; perspective: 1500px; }
+        .stack-container { position: relative; height: 500px; width: 100%; display: flex; justify-content: center; transform-style: preserve-3d;}
         
         .stack-card { 
             background: var(--bg-card); 
             padding: 2.5rem; 
-            border-radius: 16px; 
+            border-radius: 20px; 
             border: 1px solid var(--border); 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05); 
             position: absolute; 
-            top: 0; 
+            top: 0; left: 0;
             width: 100%; 
             height: 100%; 
             display: flex; 
             flex-direction: column;
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease; 
-            transform-origin: center center; 
-            overflow: hidden; /* Contains the scrollable area */
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, z-index 0s; 
+            transform-origin: 50% 100%; 
+            overflow: hidden;
+            will-change: transform, opacity;
         }
 
         .stack-card-content {
             flex-grow: 1;
             overflow-y: auto;
-            padding-right: 10px;
+            padding-right: 15px;
             color: var(--text-muted);
-            font-size: 0.95rem;
-            text-align: justify;
+            font-size: 1rem;
+            font-weight: 300;
+            line-height: 1.6;
         }
 
-        /* Custom Scrollbar for Stack Cards */
-        .stack-card-content::-webkit-scrollbar { width: 6px; }
-        .stack-card-content::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 4px; }
-        .stack-card-content::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        /* Custom Scrollbar */
+        .stack-card-content::-webkit-scrollbar { width: 4px; }
+        .stack-card-content::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 4px; }
+        .stack-card-content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
         .stack-card-content:hover::-webkit-scrollbar-thumb { background: var(--primary); }
 
-        .stack-card.swiping { transition: none; cursor: grabbing !important; }
-
-        /* Stack Desktop Controls */
+        /* Stack Controls */
         .stack-controls { 
             display: flex; 
             justify-content: center; 
             align-items: center; 
-            gap: 1.5rem; 
-            margin-top: 1.5rem;
+            gap: 1rem; 
+            margin-top: 2rem;
+            position: relative;
+            z-index: 10;
         }
         
         .stack-btn {
-            background: var(--bg-card);
+            background: rgba(255,255,255,0.05);
             border: 1px solid var(--border);
-            color: var(--text-main);
-            width: 45px;
-            height: 45px;
+            color: #fff;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
@@ -157,57 +287,66 @@
             cursor: pointer;
             transition: var(--transition);
             font-size: 1.2rem;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            backdrop-filter: blur(4px);
         }
         
-        .stack-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); transform: translateY(-2px); }
-
-        .swipe-hint { text-align: center; color: var(--text-muted); font-size: 0.85rem; font-family: var(--font-mono); display: none; margin-top: 1rem; }
-
-        /* Mobile vs Desktop UI Logic */
-        @media (hover: hover) and (pointer: fine) {
-            /* Desktop: Show arrows, keep cursor normal, no swipe hints */
-            .stack-card { cursor: default; }
-            .swipe-hint { display: none !important; }
+        .stack-btn:hover { 
+            background: var(--primary); 
+            color: #000; 
+            border-color: var(--primary); 
+            transform: scale(1.1); 
+            box-shadow: 0 0 20px var(--primary-glow);
         }
 
-        @media (hover: none) and (pointer: coarse) {
-            /* Mobile: Hide arrows, show swipe hint */
-            .stack-controls { display: none; }
-            .swipe-hint { display: block; }
-            .stack-card-content { padding-right: 0; }
-        }
+        .swipe-hint { text-align: center; color: var(--text-muted); font-size: 0.85rem; font-family: var(--font-mono); margin-top: 1rem; opacity: 0.5; }
 
         /* University Specific Styling */
-        .uni-header { display: flex; align-items: center; gap: 15px; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
-        .uni-logo { width: 60px; height: 60px; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 1.8rem; color: var(--primary); flex-shrink: 0; }
-        .uni-info h3 { margin: 0; font-size: 1.2rem; line-height: 1.3; }
-        .uni-info p { margin: 0; font-size: 0.9rem; color: var(--text-muted); }
+        .uni-header { display: flex; align-items: center; gap: 20px; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1.5rem; }
+        .uni-logo { width: 64px; height: 64px; background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(123, 44, 191, 0.1)); border: 1px solid rgba(0, 229, 255, 0.2); border-radius: 16px; display: flex; justify-content: center; align-items: center; font-size: 1.8rem; color: var(--primary); flex-shrink: 0; box-shadow: inset 0 0 20px rgba(0,229,255,0.05);}
+        .uni-info h3 { margin: 0; font-size: 1.3rem; line-height: 1.2; }
+        .uni-info p { margin: 0; font-size: 0.95rem; color: var(--text-muted); margin-top: 4px;}
 
         /* Footer */
-        footer { text-align: center; padding: 3rem 20px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; font-family: var(--font-mono); margin-top: 2rem;}
+        footer { text-align: center; padding: 3rem 20px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; font-family: var(--font-mono); margin-top: 4rem;}
         
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .stack-container { height: 550px; } /* Extra height for mobile reading */
-            nav { padding: 1rem; gap: 0.5rem; flex-wrap: wrap; }
-            nav a { font-size: 0.8rem; padding: 0.5rem; }
+        @media (max-width: 768px) {
+            nav { width: 90%; justify-content: space-around; padding: 0.5rem; top: 1rem; }
+            nav a { font-size: 0.75rem; padding: 0.5rem 0.8rem; }
+            .container { margin-top: 6rem; padding: 0 15px;}
+            h1 { font-size: 2.2rem; }
+            .profile-header { flex-direction: column; text-align: center; gap: 1rem; }
+            .stack-container { height: 580px; }
+            .card, .stack-card { padding: 1.5rem; }
+            .uni-header { flex-direction: column; text-align: center; }
         }
+        
+        /* Mobile vs Desktop Hints */
+        @media (hover: hover) and (pointer: fine) { .swipe-hint { display: none; } }
+        @media (hover: none) and (pointer: coarse) { .stack-controls { display: none; } }
     </style>
 </head>
 <body>
 
+<div class="ambient-glow"></div>
+
 <nav id="main-nav">
     <a href="#about" class="active" onclick="showSection('about', event)">ABOUT</a>
-    <a href="#experience" onclick="showSection('experience', event)">EXP & PROJECTS</a>
+    <a href="#experience" onclick="showSection('experience', event)">EXPERIENCE</a>
     <a href="#education" onclick="showSection('education', event)">EDUCATION</a>
 </nav>
 
-<div class="container">
+<main class="container">
     
     <section id="about" class="active">
-        <h1>Hello World,<br>I'm Thiago Takamura</h1>
-        <p class="subtitle">Father | Husband | Researcher | Engineer | Developer</p>
+        <div class="profile-header">
+            <div class="avatar-container">
+                <img src="https://github.com/TakaSuzanThi.png" alt="Thiago Takamura" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=Thiago+Takamura&background=00e5ff&color=050505'">
+            </div>
+            <div>
+                <h1>Hello World,<br>I'm Thiago Takamura</h1>
+                <p class="subtitle">Father | Husband | Researcher | Engineer | Developer</p>
+            </div>
+        </div>
         
         <div class="card">
             <div class="about-text">
@@ -233,10 +372,11 @@
                 <p>I really appreciate you took some time to know a little about me. I hope we can meet someday.</p>
                 <p>Abraços from Brazil.</p>
             </div>
-            <div style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+            <div style="margin-top: 2.5rem; border-top: 1px solid var(--border); padding-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem;">
                 <a href="mailto:thiagotakamura@gmail.com" class="action-link"><i class="fas fa-envelope"></i> Email</a>
                 <a href="https://linkedin.com/in/thiagoty" class="action-link" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="https://instagram.com/takamurathiago" class="action-link" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+                <a href="https://github.com/TakaSuzanThi" class="action-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
             </div>
         </div>
     </section>
@@ -246,8 +386,10 @@
         <div class="card">
             <span class="date">2023 - Present</span>
             <h3>R&D Materials Engineer <span style="color: var(--text-muted); font-weight: normal;">@ Honda</span></h3>
-            <p style="margin-bottom: 0.8rem; color: var(--text-muted);">Experience with Steel sheet homologation, Cast iron and Aluminum HPDC engine parts development. VA/VE. KTL paint line audit.</p>
-            <p style="color: var(--text-muted);">Full-Stack vibe coder for the R&D division: App & Dashboard developer, Database creation and formatting for BI.</p>
+            <div class="about-text">
+                <p style="margin-bottom: 0.8rem;">Experience with Steel sheet homologation, Cast iron and Aluminum HPDC engine parts development. VA/VE. KTL paint line audit.</p>
+                <p>Full-Stack vibe coder for the R&D division: App & Dashboard developer, Database creation and formatting for BI.</p>
+            </div>
             <div class="tag-container">
                 <span class="tag">NBR</span><span class="tag">JIS</span><span class="tag">ASTM</span><span class="tag">Power Platform</span><span class="tag">VBA</span><span class="tag">YAML</span><span class="tag">SEM-EDS</span><span class="tag">FTIR</span><span class="tag">DSC</span>
             </div>
@@ -262,7 +404,7 @@
                     <span class="date">Masters Internship</span>
                     <h3>Simulation of magneto-thermoelectric hydrodynamics</h3>
                     <a href="https://github.com/TakaSuzanThi/takasuzanthi.github.io/blob/main/Takamura2018.pdf" target="_blank" class="download-btn">
-                        <i class="fas fa-external-link-alt"></i> Read Thesis in English (Chapter abstracts also in French)
+                        <i class="fas fa-external-link-alt"></i> Read Thesis
                     </a>
                     <div class="stack-card-content">
                         <p>Magneto-thermoelectric forces arise from the interaction between a superimposed magnetic field and electric currents generated by thermoelectric phenomena near a solid-liquid interface at a given temperature gradient (Thomson-Seebeck effect). These forces cause grain movements during directional solidification.</p>
@@ -272,7 +414,7 @@
                         <p>We modeled the Navier-Stokes equations coupled with magneto-thermoelectric force, the continuity equation for electric currents, and heat transfer. Simulations were based on an Al-10%wtCu liquid domain with a single micrometric grain in a 20K/cm thermal gradient and a 0.08T static magnetic field.</p>
                     </div>
                     <div class="tag-container">
-                        <span class="tag">Navier-Stokes</span><span class="tag">Fortran</span><span class="tag">CFD</span><span class="tag">Matlab</span><span class="tag">FEM</span><span class="tag">Multi-mesh</span>
+                        <span class="tag">Navier-Stokes</span><span class="tag">Fortran</span><span class="tag">CFD</span><span class="tag">Matlab</span><span class="tag">FEM</span>
                     </div>
                 </div>
 
@@ -280,7 +422,7 @@
                     <span class="date">Master Thesis</span>
                     <h3>CALPHAD Description of the Super-cooled Liquid</h3>
                     <a href="https://github.com/TakaSuzanThi/takasuzanthi.github.io/blob/main/Takamura2021.pdf" target="_blank" class="download-btn">
-                        <i class="fas fa-external-link-alt"></i> Read Thesis in Portuguese
+                        <i class="fas fa-external-link-alt"></i> Read Thesis (PT)
                     </a>
                     <div class="stack-card-content">
                         <p>This work used the Thermo-Calc software to model, via the CALPHAD method, the super-cooled liquid (SCL) that leads to the formation of metallic vitreous materials from the Mo-Nb-B System using the 2-State Model.</p>
@@ -296,9 +438,9 @@
 
                 <div class="stack-card">
                     <span class="date">Bachelor Thesis</span>
-                    <h3>Survey on Numerical Simulations for Hydrogen Storage in Hydrides</h3>
+                    <h3>Survey on Numerical Simulations for Hydrogen Storage</h3>
                     <a href="https://github.com/TakaSuzanThi/takasuzanthi.github.io/blob/main/Takamura2019.pdf" target="_blank" class="download-btn">
-                        <i class="fas fa-external-link-alt"></i> Read Survey in Portuguese
+                        <i class="fas fa-external-link-alt"></i> Read Survey (PT)
                     </a>
                     <div class="stack-card-content">
                         <p>This study reviews the literature written to that date on the topic of hydrogen storage in metal hydrides and proposes numerical simulation projects.</p>
@@ -314,7 +456,7 @@
                     <span class="date">Scientific Initiation</span>
                     <h3>Hydrogen Absorption in MgH2 Composites</h3>
                     <a href="https://github.com/TakaSuzanThi/takasuzanthi.github.io/blob/main/Takamura2015.pdf" target="_blank" class="download-btn">
-                        <i class="fas fa-external-link-alt"></i> Read Reports in Portuguese
+                        <i class="fas fa-external-link-alt"></i> Read Reports (PT)
                     </a>
                     <div class="stack-card-content">
                         <p>This study analyzed a hydrogen storage material coated with a thin film of palladium. Mg-based nanocomposites are the most studied materials for hydrogen storage in the hydride phase (MgH2) due to its high gravimetric capacity.</p>
@@ -324,17 +466,17 @@
                         <p>The palladium surface coating aims to prevent oxidation and water formation on the surface while maintaining the material's necessary permeability to hydrogen gas.</p>
                     </div>
                     <div class="tag-container">
-                        <span class="tag">DSC</span><span class="tag">TGA</span><span class="tag">Confocal Microscopy</span>
+                        <span class="tag">DSC</span><span class="tag">TGA</span><span class="tag">Microscopy</span>
                     </div>
                 </div>
 
             </div>
             
             <div class="stack-controls" id="projects-controls">
-                <button class="stack-btn" onclick="stacks['projects'].prev()"><i class="fas fa-arrow-left"></i></button>
-                <button class="stack-btn" onclick="stacks['projects'].next()"><i class="fas fa-arrow-right"></i></button>
+                <button class="stack-btn" onclick="galleries['projects'].prev()"><i class="fas fa-arrow-left"></i></button>
+                <button class="stack-btn" onclick="galleries['projects'].next()"><i class="fas fa-arrow-right"></i></button>
             </div>
-            <p class="swipe-hint"><i class="fas fa-hand-point-up"></i> Swipe cards to navigate</p>
+            <p class="swipe-hint"><i class="fas fa-arrows-left-right"></i> Swipe to navigate</p>
         </div>
     </section>
 
@@ -356,9 +498,9 @@
                     <div class="stack-card-content">
                         <p><strong>Specialization:</strong> Metallic Materials & Computational Chemistry.</p>
                         <br>
-                        <p>Currently researching Hydrogen storage on High Entropy Alloys (HEA) through Density Functional Theory simulations. The advent of HEA concept opened a pathway for exploring huge compositional spaces for discovering and designing alloys with optimized performance for each specific application.
-                        This is particularly interesting for investigating alloys for Hydrogen storage, since these properties of an alloy are strongly dependent on its composition. In this project, theoretical studies will be compared with experimental data and applied to a new thermodynamic model to increase our fundamental understanding of the underlying mechanisms controlling H storage in HEAs.
-                        The scientific objective is to make the correlation between electronic/atomic structures and the thermodynamics of the hydrogen absorption/desorption since a high H storage is sought with this reversible transformation between alloy and hydride at low temperature and pressure.</p>
+                        <p>Currently researching Hydrogen storage on High Entropy Alloys (HEA) through Density Functional Theory simulations. The advent of HEA concept opened a pathway for exploring huge compositional spaces for discovering and designing alloys with optimized performance for each specific application.</p>
+                        <br>
+                        <p>This is particularly interesting for investigating alloys for Hydrogen storage, since these properties of an alloy are strongly dependent on its composition. In this project, theoretical studies will be compared with experimental data and applied to a new thermodynamic model to increase our fundamental understanding of the underlying mechanisms controlling H storage in HEAs.</p>
                     </div>
                 </div>
                 
@@ -366,7 +508,7 @@
                     <div class="uni-header">
                         <div class="uni-logo"><i class="fas fa-graduation-cap"></i></div>
                         <div class="uni-info">
-                            <h3>Brazilian Master in Materials Sci. & Eng.</h3>
+                            <h3>Master in Materials Sci. & Eng.</h3>
                             <p>Universidade Federal de São Carlos (UFSCar)</p>
                         </div>
                     </div>
@@ -416,15 +558,15 @@
             </div>
             
             <div class="stack-controls" id="edu-controls">
-                <button class="stack-btn" onclick="stacks['edu'].prev()"><i class="fas fa-arrow-left"></i></button>
-                <button class="stack-btn" onclick="stacks['edu'].next()"><i class="fas fa-arrow-right"></i></button>
+                <button class="stack-btn" onclick="galleries['edu'].prev()"><i class="fas fa-arrow-left"></i></button>
+                <button class="stack-btn" onclick="galleries['edu'].next()"><i class="fas fa-arrow-right"></i></button>
             </div>
-            <p class="swipe-hint"><i class="fas fa-hand-point-up"></i> Swipe cards to navigate</p>
+            <p class="swipe-hint"><i class="fas fa-arrows-left-right"></i> Swipe to navigate</p>
         </div>
 
     </section>
 
-</div>
+</main>
 
 <footer>
     &copy; 2026 TAKAMURA Thiago. Built on ❤️ GitHub Pages.
@@ -441,19 +583,20 @@
         document.getElementById(sectionId).classList.add('active');
         document.querySelector(`nav a[href="#${sectionId}"]`).classList.add('active');
         
-        // Re-render stacks when section is visible to ensure proper calculations
-        if(sectionId === 'experience' && stacks['projects']) stacks['projects'].update();
-        if(sectionId === 'education' && stacks['edu']) stacks['edu'].update();
+        // Trigger resize calculation for active section
+        if(galleries['projects'] && sectionId === 'experience') galleries['projects'].update();
+        if(galleries['edu'] && sectionId === 'education') galleries['edu'].update();
         
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // --- Reusable Stack Gallery Class ---
+    // --- State-Driven Stack Gallery (No DOM Thrashing) ---
     class StackGallery {
         constructor(containerId) {
             this.container = document.getElementById(containerId);
             this.cards = Array.from(this.container.querySelectorAll('.stack-card'));
-            this.isMobile = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+            this.currentIndex = 0; // State pointer
+            this.total = this.cards.length;
             
             this.startX = 0;
             this.isSwiping = false;
@@ -463,9 +606,6 @@
 
         init() {
             this.update();
-            
-            // Only bind touch events for mobile UX. 
-            // Desktop relies purely on the UI buttons to prevent messy mouse-drag UX.
             this.container.addEventListener('touchstart', (e) => this.swipeStart(e), {passive: true});
             window.addEventListener('touchmove', (e) => this.swiping(e), {passive: false});
             window.addEventListener('touchend', (e) => this.swipeEnd(e));
@@ -473,78 +613,58 @@
 
         update() {
             this.cards.forEach((card, index) => {
-                card.style.transition = 'transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease';
-                card.classList.remove('swiping');
-
-                if (index === 0) {
-                    card.style.zIndex = '4';
-                    card.style.transform = 'translateZ(0) translateY(0) scale(1)';
+                // Calculate virtual position relative to current index
+                let relativeIndex = (index - this.currentIndex + this.total) % this.total;
+                
+                // Reset custom inline swipe transforms
+                card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, filter 0.6s ease';
+                
+                if (relativeIndex === 0) {
+                    // Front Card
+                    card.style.zIndex = this.total;
+                    card.style.transform = 'translateZ(0) translateY(0) scale(1) rotateX(0deg)';
                     card.style.opacity = '1';
-                    card.style.pointerEvents = 'auto'; // allow scrolling internal content
-                } else if (index === 1) {
-                    card.style.zIndex = '3';
-                    card.style.transform = 'translateY(20px) scale(0.95)';
-                    card.style.opacity = '1';
-                    card.style.pointerEvents = 'none';
-                } else if (index === 2) {
-                    card.style.zIndex = '2';
-                    card.style.transform = 'translateY(40px) scale(0.9)';
-                    card.style.opacity = '1';
-                    card.style.pointerEvents = 'none';
+                    card.style.filter = 'blur(0px) brightness(1)';
+                    card.style.pointerEvents = 'auto'; 
                 } else {
-                    card.style.zIndex = '1';
-                    card.style.transform = 'translateY(60px) scale(0.85)';
-                    card.style.opacity = '1'; 
+                    // Background Cards
+                    card.style.zIndex = this.total - relativeIndex;
+                    let yOffset = relativeIndex * 25;
+                    let scale = 1 - (relativeIndex * 0.05);
+                    card.style.transform = `translateZ(-${relativeIndex * 100}px) translateY(${yOffset}px) scale(${scale})`;
+                    card.style.opacity = Math.max(1 - (relativeIndex * 0.2), 0);
+                    card.style.filter = `blur(${relativeIndex}px) brightness(${1 - relativeIndex*0.1})`;
                     card.style.pointerEvents = 'none';
                 }
             });
         }
 
         next() {
-            if(this.cards.length <= 1) return;
-            const topCard = this.cards.shift(); // Remove first
-            
-            // Animate out
-            topCard.style.transform = 'translateX(-120%) rotate(-15deg)';
-            topCard.style.opacity = '0';
-            
-            setTimeout(() => {
-                this.cards.push(topCard); // Add to end
-                this.container.appendChild(topCard); // Move DOM element
-                this.update();
-            }, 300);
-        }
-
-        prev() {
-            if(this.cards.length <= 1) return;
-            const bottomCard = this.cards.pop(); // Remove last
-            
-            // Prep for animation in
-            bottomCard.style.transition = 'none';
-            bottomCard.style.transform = 'translateX(120%) rotate(15deg)';
-            bottomCard.style.opacity = '0';
-            
-            this.cards.unshift(bottomCard); // Add to beginning
-            this.container.insertBefore(bottomCard, this.container.firstChild); // Move DOM
-            
-            // Trigger reflow & animate in
-            void bottomCard.offsetWidth; 
+            this.currentIndex = (this.currentIndex + 1) % this.total;
             this.update();
         }
 
-        // Mobile Touch Logic
+        prev() {
+            this.currentIndex = (this.currentIndex - 1 + this.total) % this.total;
+            this.update();
+        }
+
+        // Mobile Touch Logic - Refined
         swipeStart(e) {
-            if(this.cards.length <= 1) return;
-            // Prevent swipe if user is scrolling inside the card content
-            if(e.target.closest('.stack-card-content')) {
-                const content = e.target.closest('.stack-card-content');
-                // If the element has vertical scroll available, don't trigger swipe easily
-                if(content.scrollHeight > content.clientHeight) return; 
+            if(this.total <= 1) return;
+            const content = e.target.closest('.stack-card-content');
+            
+            // Allow vertical scrolling inside the card without triggering swipe
+            if(content && content.scrollHeight > content.clientHeight) {
+                // Simple check if user is at boundary to still allow swipe, but keeping it safe:
+                if (e.touches[0].clientY > content.getBoundingClientRect().top) return; 
             }
 
             this.isSwiping = true;
             this.startX = e.touches[0].clientX;
-            this.cards[0].classList.add('swiping');
+            
+            // Remove transition for immediate 1-to-1 finger tracking
+            this.cards[this.currentIndex].style.transition = 'none';
         }
 
         swiping(e) {
@@ -552,38 +672,33 @@
             const currentX = e.touches[0].clientX;
             const diffX = currentX - this.startX;
             
-            // Prevent vertical scrolling of the page while swiping sideways
-            if (Math.abs(diffX) > 20) {
-                if(e.cancelable) e.preventDefault(); 
-            }
+            if (Math.abs(diffX) > 15 && e.cancelable) e.preventDefault(); // Lock vertical scroll
             
-            this.cards[0].style.transform = `translateX(${diffX}px) rotate(${diffX / 25}deg)`;
+            const rotateY = diffX / 15;
+            this.cards[this.currentIndex].style.transform = `translateX(${diffX}px) rotateY(${rotateY}deg) scale(0.98)`;
         }
 
         swipeEnd(e) {
             if (!this.isSwiping) return;
             this.isSwiping = false;
             
-            const currentX = e.changedTouches[0].clientX;
-            const diffX = currentX - this.startX;
-            const threshold = window.innerWidth * 0.25;
+            const diffX = e.changedTouches[0].clientX - this.startX;
+            const threshold = 60; // Lower threshold for easier swiping
 
             if (Math.abs(diffX) > threshold) {
-                if(diffX > 0) this.prev(); // Swipe Right -> Prev
-                else this.next(); // Swipe Left -> Next
+                if(diffX > 0) this.prev(); 
+                else this.next(); 
             } else {
                 this.update(); // Snap back
             }
         }
     }
 
-    // Initialize globally to be accessed by inline button clicks
-    const stacks = {};
+    const galleries = {};
     document.addEventListener("DOMContentLoaded", () => {
-        stacks['projects'] = new StackGallery('projects-stack');
-        stacks['edu'] = new StackGallery('edu-stack');
+        galleries['projects'] = new StackGallery('projects-stack');
+        galleries['edu'] = new StackGallery('edu-stack');
     });
-
 </script>
 
 </body>
