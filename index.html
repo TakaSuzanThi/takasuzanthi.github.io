@@ -63,11 +63,11 @@
         /* Layout */
         .container { max-width: 800px; margin: 3rem auto; padding: 0 20px; min-height: 80vh; }
         
-        section { display: none; animation: fadeIn 0.5s ease-out forwards; opacity: 1; }
+        section { display: none; animation: fadeIn 0.5s ease-out forwards; opacity: 0; }
         section.active { display: block; }
 
         @keyframes fadeIn { 
-            from { opacity: 1; transform: translateY(20px); } 
+            from { opacity: 0; transform: translateY(20px); } 
             to { opacity: 1; transform: translateY(0); } 
         }
 
@@ -206,27 +206,32 @@
 <div class="container">
     
     <section id="about" class="active">
-        <h1>Hello World!<br>I'm Thiago Takamura 🖖</h1>
-        <p class="subtitle">Researcher | Engineer | Developer</p>
+        <h1>Hello World,<br>I'm Thiago Takamura 🖖</h1>
+        <p class="subtitle">Father | Husband | Researcher | Engineer | Developer</p>
         
         <div class="card">
             <div class="about-text">
-                <p>My application for Materials Engineering came from an unsettling curiosity about thermodynamics. Since childhood, I have had an affection for the concept of equilibrium. Bewildered by dichotomies, I’ve always been interested in both arts and science. In the field of natural studies, I delighted in chemistry and physics, whereas materials science settled perfectly into the heart of my scientific interest.</p>
+                <p>My application for Materials Engineering came from an unsettling curiosity about thermodynamics. Since childhood, I've been bewildered by dichotomies, a strange affection for the equilibrium and the mixing. Arts & Science, Logics & Feelings, Black & white, Women & man. In the field of natural studies, I delighted in chemistry and physics, where materials science settled perfectly into the heart of my scientific interest.</p>
                 
-                <p>As a freshman at a Brazilian university, I dedicated a whole semester to writing a visual Conway’s Game of Life in C++ (which was meant to be weekend homework). Programming was love at first sight. Later, studying in France, I deepened my programming studies, focusing on materials simulation. During my internship at the EPM - SIMAP laboratory, I simulated grain movement using the finite element method in Fortran—creating a virtual world to comprehend magneto-thermoelectric effects and fluid dynamics.</p>
+                <p>As a freshman at a Brazilian university, I dedicated a whole semester to writing a visual Conway’s Game of Life in C++ (which was meant to be weekend homework). Computer Science was also love at first sight. Later, studying in France, I deepened my programming studies, focusing on materials simulation. During my internship at the EPM - SIMAP laboratory, I simulated grain movements using the Finite Elements Method in Fortran, creating a virtual world to comprehend magneto-thermoelectric effects with fluid dynamics.</p>
                 
-                <p>From 2016 to 2018, I joined UGA - Polytech and discovered the "old western world," a mind-blowing experience that broadened my worldview. A Brazilian poem by Drummond says:<br>
+                <p>From 2016 to 2018, I joined UGA - Polytech and discovered the "old western world," a mind-blowing experience that broadened my worldview on Cultures. As a Brazilian poem by Drummond says:<br>
                 <i>"No, my heart is not bigger than the World.<br> It's much smaller.<br> It can't even hold my sorrow."</i><br>
                 This echoes the indescribable beauties of the universe, which we ironically seek to describe or at least simulate.</p>
                 
-                <p>Like children, philosophers, and artists, I keep an insatiable curiosity to understand nature and humanity. Our moral obligation to ensure dignity through technology inspired my first internship in 2014, recognizing that hydrogen will eventually overturn our energy infrastructure. In my current PhD thesis, I am revisiting this field through Density Functional Theory (solid-state quantum computational chemistry).</p>
-                
                 <p>Between 2019 and 2021, I worked on a Master’s thesis to develop a more accurate thermodynamic model for liquid metals (specifically the supercooled region). I also taught college tutoring programs and preparatory courses in public high schools. Spotting the bright insight in a student's eye taught me that knowledge, like happiness, only makes sense if shared.</p>
                 
-                <p>2021 I met the love of my life and by the end of 2022 she gifted me with our child and the blessing on loving unconditionally. By 2023 I started my carrer in the industry as an R&D engineer in the automotive sector, now I have the priviledge to learn about many industrial processes of a large supply-chain. It has been realy interesting to understand deeply the technical infrastructure of our world.</p>
+                <p>2021 I met the love of my life and by the end of 2022 she gifted me with our child and a blessing on loving unconditionally.</p>
                 
-                <p>As a Researcher, a Developer and an Engineer, I humbly seek comprehension of our universe to ease the struggle on all human lifes. As a father, a husband and a professor, I seek to help build a kinder world. I strive to contribute, as Whitman once said:<br>
+                <p>Like children, philosophers, and artists, I keep an insatiable curiosity to understand nature and humanity. Our moral obligation to ensure dignity through technology inspired my first internship in 2014, recognizing that hydrogen will eventually overturn our energy infrastructure. In my current PhD thesis, I am revisiting this field through Density Functional Theory simulations.</p>
+
+                <p>By 2023 I started my carrer in the industry as an R&D engineer in the automotive sector, now I have the priviledge to learn about many industrial processes of a large supply-chain. It has been realy interesting to understand deeply the technical infrastructure of our world.</p>
+                
+                <p>As a Researcher, a Developer and an Engineer, I humbly seek comprehension of our universe to ease the struggle on all human lifes. As a father, a husband and a professor, I seek to help build a kinder world with less fear and oppression. I strive to contribute, as Whitman once said:<br>
                 <i>“A verse while the powerful play of Life goes on.”</i></p>
+
+                <p>I really appreciate you took some time to know a little about me. I hope we can meet someday.</p>
+                <p>Abraços from Brazil</p>
             </div>
             <div style="margin-top: 2rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
                 <a href="mailto:thiagotakamura@gmail.com" class="action-link"><i class="fas fa-envelope"></i> Email</a>
