@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            /* Precision Slate Palette */
+            /* Palette */
             --primary: #38bdf8;       /* Sky Blue */
             --primary-hover: #0284c7; /* Darker Blue */
             --accent: #818cf8;        /* Indigo */
@@ -313,6 +313,11 @@
         /* Mobile vs Desktop Hints */
         @media (hover: hover) and (pointer: fine) { .swipe-hint { display: none; } }
         @media (hover: none) and (pointer: coarse) { .stack-controls { display: none; } }
+        
+        /* Game of Life Specific */
+        #golCanvas {
+            touch-action: none; /* Prevent scrolling while drawing */
+        }
     </style>
 </head>
 <body>
@@ -389,6 +394,21 @@
         <div class="stack-wrapper" id="projects-wrapper">
             <div class="stack-container" id="projects-stack">
                 
+                <div class="stack-card" id="gol-card">
+                    <span class="date">My first College Homework</span>
+                    <h3>Conway Cellular Automata - a Game of Life</h3>
+                    <div class="stack-card-content" style="display: flex; flex-direction: column; overflow: hidden;">
+                        <p style="margin-bottom: 15px; font-size: 0.9rem;">
+                            A live JS adaptation of my original C-based Game of Life (`Game2.2.c`).<br>
+                            <strong style="color: var(--primary);">Touch/Click & Drag on the board below to spark abiogenesis!</strong>
+                        </p>
+                        <canvas id="golCanvas" style="width: 100%; flex-grow: 1; border-radius: 8px; background: var(--bg-main); border: 1px solid var(--border); cursor: crosshair;"></canvas>
+                    </div>
+                    <div class="tag-container">
+                        <span class="tag">C</span><span class="tag">JavaScript</span><span class="tag">Algorithms</span><span class="tag">Cellular Automata</span>
+                    </div>
+                </div>
+
                 <div class="stack-card">
                     <span class="date">Masters Internship</span>
                     <h3>Simulation of magneto-thermoelectric hydrodynamics</h3>
@@ -479,7 +499,7 @@
                     <div class="uni-header">
                         <div class="uni-logo"><i class="fas fa-microscope"></i></div>
                         <div class="uni-info">
-                            <h3>PhD in Materials Science & Engineering</h3>
+                            <h3>PhD Candidate in Materials Science & Engineering</h3>
                             <p>Universidade Federal de São Carlos (UFSCar)</p>
                         </div>
                     </div>
@@ -574,7 +594,7 @@
 </main>
 
 <footer>
-    &copy; 2026 TAKAMURA Thiago. Built on ❤️ GitHub Pages.
+    &copy; 2026 TAKAMURA Thiago. Built on Open Sources ❤️
 </footer>
 
 <script>
@@ -595,7 +615,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // --- State-Driven Stack Gallery (Refined Physics) ---
+    // --- State-Driven Stack Gallery ---
     class StackGallery {
         constructor(containerId) {
             this.container = document.getElementById(containerId);
@@ -627,6 +647,7 @@
                     card.style.transform = 'translateZ(0) translateY(0) scale(1)';
                     card.style.opacity = '1';
                     card.style.pointerEvents = 'auto'; 
+                    card.classList.add('active-stack-card'); // Used for GOL hook
                 } else {
                     card.style.zIndex = this.total - relativeIndex;
                     let yOffset = relativeIndex * 20;
@@ -635,6 +656,7 @@
                     card.style.transform = `translateZ(-${relativeIndex * 50}px) translateY(${yOffset}px) scale(${scale})`;
                     card.style.opacity = Math.max(1 - (relativeIndex * 0.3), 0);
                     card.style.pointerEvents = 'none';
+                    card.classList.remove('active-stack-card'); // Used for GOL hook
                 }
             });
         }
@@ -651,6 +673,9 @@
 
         swipeStart(e) {
             if(this.total <= 1) return;
+            // Prevent gallery swipe if starting on canvas
+            if(e.target.tagName.toLowerCase() === 'canvas') return; 
+
             const content = e.target.closest('.stack-card-content');
             
             if(content && content.scrollHeight > content.clientHeight) {
@@ -693,7 +718,162 @@
     document.addEventListener("DOMContentLoaded", () => {
         galleries['projects'] = new StackGallery('projects-stack');
         galleries['edu'] = new StackGallery('edu-stack');
+        initGOL(); // Initialize Game of Life
     });
+
+    // --- GAME OF LIFE IMPLEMENTATION ---
+    const golCanvas = document.getElementById('golCanvas');
+    const golCtx = golCanvas.getContext('2d', { alpha: false });
+    const golCard = document.getElementById('gol-card');
+    const expSection = document.getElementById('experience');
+    
+    const CELL_SIZE = 6;
+    const FPS = 15;
+    let cols, rows;
+    let grid = [];
+    let isDrawing = false;
+    let lastFrameTime = 0;
+    let golAnimId = null;
+
+    function buildGrid() {
+        return new Array(cols).fill(null).map(() => new Array(rows).fill(0));
+    }
+
+    function initGOL() {
+        resizeCanvas();
+        grid = buildGrid();
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            grid = buildGrid();
+        });
+        setupInteractions();
+        requestAnimationFrame(gameLoop);
+    }
+
+    function resizeCanvas() {
+        const rect = golCanvas.parentElement.getBoundingClientRect();
+        // Give it a fixed height or let it flex, but we need raw pixel mapping
+        golCanvas.width = rect.width - 30; // padding offset
+        golCanvas.height = Math.max(250, rect.height - 80); 
+        cols = Math.floor(golCanvas.width / CELL_SIZE);
+        rows = Math.floor(golCanvas.height / CELL_SIZE);
+    }
+
+    function checkActiveState() {
+        // Game only runs if it's the top card AND the section is active
+        return expSection.classList.contains('active') && golCard.classList.contains('active-stack-card');
+    }
+
+    function paint(x, y) {
+        const rect = golCanvas.getBoundingClientRect();
+        const col = Math.floor((x - rect.left) / CELL_SIZE);
+        const row = Math.floor((y - rect.top) / CELL_SIZE);
+        const brushRadius = 2; 
+        
+        for (let i = -brushRadius; i <= brushRadius; i++) {
+            for (let j = -brushRadius; j <= brushRadius; j++) {
+                // Natural noise to brush strokes
+                if (Math.random() > 0.2) { 
+                    const c = col + i;
+                    const r = row + j;
+                    if (c >= 0 && c < cols && r >= 0 && r < rows) {
+                        grid[c][r] = 1;
+                    }
+                }
+            }
+        }
+    }
+
+    function setupInteractions() {
+        const startPaint = (e) => {
+            if(!checkActiveState()) return;
+            isDrawing = true;
+            e.stopPropagation(); // Prevent swipe clash
+            const evt = e.touches ? e.touches[0] : e;
+            paint(evt.clientX, evt.clientY);
+        };
+        
+        const movePaint = (e) => {
+            if (!isDrawing || !checkActiveState()) return;
+            e.preventDefault(); // Stop scroll while drawing
+            e.stopPropagation();
+            const evt = e.touches ? e.touches[0] : e;
+            paint(evt.clientX, evt.clientY);
+        };
+
+        const endPaint = () => { isDrawing = false; };
+
+        golCanvas.addEventListener('mousedown', startPaint);
+        golCanvas.addEventListener('mousemove', movePaint);
+        window.addEventListener('mouseup', endPaint);
+
+        golCanvas.addEventListener('touchstart', startPaint, {passive: false});
+        golCanvas.addEventListener('touchmove', movePaint, {passive: false});
+        window.addEventListener('touchend', endPaint);
+    }
+
+    function updateGrid() {
+        let nextGrid = buildGrid();
+        
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                let state = grid[i][j];
+                let neighbors = 0;
+                
+                // Count alive neighbors (Moore neighborhood)
+                for (let x = -1; x <= 1; x++) {
+                    for (let y = -1; y <= 1; y++) {
+                        if (x === 0 && y === 0) continue;
+                        let c = (i + x + cols) % cols; // Toroidal wrap
+                        let r = (j + y + rows) % rows;
+                        neighbors += grid[c][r];
+                    }
+                }
+
+                // Conway Rules (Game2.2.c logic)
+                if (state === 1 && (neighbors < 2 || neighbors > 3)) {
+                    nextGrid[i][j] = 0; // Death by under/over population
+                } else if (state === 0 && neighbors === 3) {
+                    nextGrid[i][j] = 1; // Birth
+                } else {
+                    nextGrid[i][j] = state; // Survival
+                }
+            }
+        }
+        grid = nextGrid;
+    }
+
+    function drawGrid() {
+        golCtx.fillStyle = '#0f172a'; // --bg-main
+        golCtx.fillRect(0, 0, golCanvas.width, golCanvas.height);
+        
+        golCtx.fillStyle = '#38bdf8'; // --primary
+        for (let i = 0; i < cols; i++) {
+            for (let j = 0; j < rows; j++) {
+                if (grid[i][j] === 1) {
+                    golCtx.fillRect(i * CELL_SIZE, j * CELL_SIZE, CELL_SIZE - 1, CELL_SIZE - 1);
+                }
+            }
+        }
+    }
+
+    function gameLoop(timestamp) {
+        golAnimId = requestAnimationFrame(gameLoop);
+        
+        if (!checkActiveState()) {
+            // If inactive, wipe grid so it starts fresh next time user looks
+            grid = buildGrid();
+            drawGrid();
+            return;
+        }
+
+        // Throttle FPS
+        if (timestamp - lastFrameTime < 1000 / FPS) return;
+        lastFrameTime = timestamp;
+
+        if (!isDrawing) updateGrid(); // Pause evolution while actively painting
+        drawGrid();
+    }
 </script>
 
 </body>
