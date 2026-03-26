@@ -727,7 +727,7 @@
     const golCard = document.getElementById('gol-card');
     const expSection = document.getElementById('experience');
     
-    const CELL_SIZE = 6;
+    const CELL_SIZE = 4;
     const FPS = 15;
     let cols, rows;
     let grid = [];
@@ -773,7 +773,7 @@
         for (let i = -brushRadius; i <= brushRadius; i++) {
             for (let j = -brushRadius; j <= brushRadius; j++) {
                 // Natural noise to brush strokes
-                if (Math.random() > 0.2) { 
+                if (Math.random() > 0.4) { 
                     const c = col + i;
                     const r = row + j;
                     if (c >= 0 && c < cols && r >= 0 && r < rows) {
