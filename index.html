@@ -765,8 +765,15 @@
 
     function paint(x, y) {
         const rect = golCanvas.getBoundingClientRect();
-        const col = Math.floor((x - rect.left) / CELL_SIZE);
-        const row = Math.floor((y - rect.top) / CELL_SIZE);
+        
+        // FIX: Calculate scale to handle CSS width: 100% vs actual internal resolution
+        const scaleX = golCanvas.width / rect.width;
+        const scaleY = golCanvas.height / rect.height;
+        
+        // Apply the scale mathematically to map the viewport coordinates exactly
+        const col = Math.floor(((x - rect.left) * scaleX) / CELL_SIZE);
+        const row = Math.floor(((y - rect.top) * scaleY) / CELL_SIZE);
+        
         const brushRadius = 2; 
         
         for (let i = -brushRadius; i <= brushRadius; i++) {
